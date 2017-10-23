@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Ejercicios DOM</title>
+</head>
+<body>
+	
+	<section id="ej2">
+		<ul id="lista1">
+			<li><a onmouseover="mostrarEnlaces(0)" href="http://www.google.es">Google</a></li>
+			<li><a onmouseover="mostrarEnlaces(1)" href="http://www.facebok.com">Facebook</a></li>
+			<li><a onmouseover="mostrarEnlaces(2)" href="http://www.instagram.com">Instagram</a></li>
+		</ul>
+
+		<form>
+			<input id="texto" type="text" name="hrefs">
+		</form>
+	</section>
+
+	<section id="ej3">
+		<button onclick="cambiarFondo(0)" id="imagen1" value="imagen 1">imagen 1</button>
+		<button onclick="cambiarFondo(1)" id="imagen2" value="imagen 2">imagen 2</button>
+		<button onclick="cambiarFondo(2)" id="imagen3" value="imagen 3">imagen 3</button>
+		<button onclick="cambiarFondo(3)" id="imagen4" value="imagen 4">imagen 3</button>
+	</section>
+	
+	<section id="ej4">
+		<ul id="lista">
+			<li>uno</li>
+			<li>dos</li>
+			<li>tres</li>
+			<li>cuatro</li>
+		</ul>
+		<button onclick="insertarLista()">Insertar elemento en lista</button>
+	</section>
+	
+	<section id="ej5">
+		<ul id="lista">
+			<li>uno</li>
+			<li>dos</li>
+			<li>tres</li>
+			<li>cuatro</li>
+		</ul>
+		<button onclick="insertarLista()">Insertar elemento en lista</button>
+	</section>
+
+	<script type="text/javascript" src="js.js"></script>
+</body>
+</html>
