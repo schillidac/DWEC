@@ -11,16 +11,17 @@
 
 <body>
 	
-	<nav id="menu">
-		<ul>
-			<li onclick="mostrar(0)">Todos los Usuarios</li>
-			<li onclick="mostrar(1)">Por Provincia</li>
-			<li onclick="mostrar(2)">Por cuota</li>
-		</ul>
-	</nav>
+	<form>
+		<label>Mostrar usuarios </label>
+		<input type="radio" name="elegir" onclick="mostrar(0)"><br>
+		<label>Mostrar usuarios por provincias </label>
+		<input type="radio" name="elegir" onclick="mostrar(1)"><br>
+		<label>Mostrar usuarios por cuotas </label><input type="radio" name="elegir" onclick="mostrar(2)">
+	</form>
 
 	<table id="tabla">
 		<tr><th>Usuario</th><th>Provincia</th><th>Cuota</th></tr>
+		<tbody id="table-body"></tbody>
 	</table>
 
 
