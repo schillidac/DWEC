@@ -4,26 +4,36 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style type="text/css">
-		ul{display:inline;}
-
+		#opciones, #camposprovincia, #camposcuota{
+			display:none;
+		}
 	</style>
 </head>
 
 <body>
+
+	<h2>Mostrar Usuarios</h2>
 	
-	<form>
-		<label>Mostrar usuarios </label>
-		<input type="radio" name="elegir" onclick="mostrar(0)"><br>
-		<label>Mostrar usuarios por provincias </label>
-		<input type="radio" name="elegir" onclick="mostrar(1)"><br>
-		<label>Mostrar usuarios por cuotas </label><input type="radio" name="elegir" onclick="mostrar(2)">
-	</form>
+	<section id="panel">
+		<input type="button" onclick="opciones(0)" value="Todos">
+		<input type="button"  onclick="opciones(1)" value="Por provincia">
+		<input type="button"  onclick="opciones(2)" value="Por cuota">
+		<form id="opciones">
+			<fieldset id="camposprovincia">
+				<input type="text" name="provincia" id="provincia">
+				<input type="button"  onclick="mostrar(1)" value="Mostrar">
+			</fieldset>
+			<fieldset id="camposcuota">
+				<input type="number" name="cuota" id="cuota">
+				<input type="button"  onclick="mostrar(2,0)" value="Menor">
+				<input type="button"  onclick="mostrar(2,1)" value="Mayor">
+			</fieldset>
+		</form>
+	</section>
 
-	<table id="tabla">
-		<tr><th>Usuario</th><th>Provincia</th><th>Cuota</th></tr>
-		<tbody id="table-body"></tbody>
-	</table>
 
+
+	<table id="tabla"></table>
 
 <script type="text/javascript" src="js.js"></script>	
 </body>

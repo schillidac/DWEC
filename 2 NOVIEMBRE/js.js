@@ -5,107 +5,74 @@ class Usuarios{
 		this.usuario = usuario;
 		this.provincia = provincia;
 		this.cuota = cuota;
-
 	}
 
-
-	generarTabla(contador){
-
-		if(parseInt(contador) == 0){
-			var tbody = document.createElement("tbody");
-			tbody.setAttribute("id", "table-body");
-			document.getElementById("tabla").appendChild(tbody);
-		}
-
-		var fila = document.createElement("tr");
-		fila.setAttribute("id", ""+contador+"")
-		fila.setAttribute("class", "fila");
-		//creamos columnas
-		var columna1 = document.createElement("td");
-		columna1.appendChild(document.createTextNode(this.usuario));
-		var columna2 = document.createElement("td");
-		columna2.appendChild(document.createTextNode(this.provincia));
-		var columna3 = document.createElement("td");
-		columna3.appendChild(document.createTextNode(this.cuota));
-		//añadimos las filas y las columnas a la tabla
-		document.getElementById("table-body").appendChild(fila);
-		fila.appendChild(columna1);
-		fila.appendChild(columna2);
-		fila.appendChild(columna3);
-
-	}
-
-
-	mostrarUsuarios(contador){
+	mostrarUsuarios(){
 		
-		this.generarTabla(contador);
-
+		return "<tr><td>" +this.usuario+ "</td><td>" +this.provincia+ "</td><td>" +this.cuota+ "</td></tr>";
 	}
 
-	mostrarProvincia(contador, provincia){
-
+	mostrarProvincia(provincia){
 
 		if(this.provincia == provincia)
-			this.generarTabla(contador);
-
-
+			return "<tr><td>" +this.usuario+ "</td><td>" +this.provincia+ "</td><td>" +this.cuota+ "</td></tr>";
+		else
+			return "";
 	}
 
-	mostrarCuota(contador, cuota){
+	mostrarCuota(cuota, menormayor){
 
-		if(this.cuota < cuota)
-			this.generarTabla(contador);
-
+		if(this.cuota < cuota && parseInt(menormayor) == 0)
+			return "<tr><td>" +this.usuario+ "</td><td>" +this.provincia+ "</td><td>" +this.cuota+ "</td></tr>";
+		else if(this.cuota > cuota && parseInt(menormayor) == 1)
+			return "<tr><td>" +this.usuario+ "</td><td>" +this.provincia+ "</td><td>" +this.cuota+ "</td></tr>";
+		else
+			return "";
 	}
-
 }
 
+var usuarios = [new Usuarios("Laura","Santander",50) ,new Usuarios("Álvaro","Castro",50) ,new Usuarios("Igor","Castro",60) ,new Usuarios("Ivan","Santander",40) ,new Usuarios("Mónica","Zamora",30) ,new Usuarios("Javi","Bilbao",30) ,new Usuarios("David","Bilbao",50) ,new Usuarios("José Luis","Bilbao",60)];
 
+function mostrar(num, menormayor){
 
+	var contenido = "<thead><tr><th>Usuario</th><th>Provincia</th><th>Cuota</th></tr></thead>";
+	var provincia = "";
+	var cuota = "";
 
-var texto = ["Laura;Santander;50" , "Álvaro;Castro;50" , 
-"Igor;Castro;60", "Ivan;Santander;40" , "Mónica;Zamora;30" , "Javi;Bilbao;30" , "David;Bilbao;50" , "José Luis;Bilbao;60"];
-
-var objetos = [];
-
-var contador = 0;
-
-for(var i = 0; i < texto.length; i++){
-
-	var usuarios = texto[i].split(";");
-	objetos[i] = new Usuarios(usuarios[0],usuarios[1],usuarios[2]);
-	
-}
-
-function mostrar(num){
-
-
-	var tbody = document.getElementById("table-body");
-	tbody.parentNode.removeChild(tbody);
-
-
-	switch(num){
-
-		case 0:
-			for(var i = 0; i < objetos.length; i++)
-				objetos[i].mostrarUsuarios(i);	
-		break;
-		case 1:
-			var provincia = prompt("Indica una provincia");
-			for(var i = 0; i < objetos.length; i++)
-				objetos[i].mostrarProvincia(i, provincia);	
-		break;
-		case 2:
-			var cuota = prompt("Indica una cuota");
-			for(var i = 0; i < objetos.length; i++)
-				objetos[i].mostrarCuota(i, cuota);
-
+	for(var i = 0; i < usuarios.length; i++){
+		if(num == 0)
+			contenido += usuarios[i].mostrarUsuarios();
+		else if(num == 1){
+			provincia = document.getElementById("provincia").value;
+			contenido += usuarios[i].mostrarProvincia(provincia);
+		}
+		else{
+			cuota = document.getElementById("cuota").value;
+			contenido += usuarios[i].mostrarCuota(cuota, menormayor);
+		}
 	}
-
-	parseInt(contador++);
-
+	document.getElementById("tabla").innerHTML = contenido;
 }
 
+function opciones(num){
+
+	if(num == 1){
+		document.getElementById("opciones").style.display = "block";
+		document.getElementById("camposprovincia").style.display = "block";
+		document.getElementById("camposcuota").style.display = "none";
+	}
+	else if(num == 2){
+		document.getElementById("opciones").style.display = "block";
+		document.getElementById("camposcuota").style.display = "block";
+		document.getElementById("camposprovincia").style.display = "none";
+	}
+	else{
+		document.getElementById("opciones").style.display = "none";
+		document.getElementById("camposcuota").style.display = "none";
+		document.getElementById("camposprovincia").style.display = "none";
+		mostrar(num);
+	}
+}
 
 
 
