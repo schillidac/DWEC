@@ -3,38 +3,35 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style type="text/css">
-		#opciones, #camposprovincia, #camposcuota{
-			display:none;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
 
-	<h2>Mostrar Usuarios</h2>
-	
-	<section id="panel">
-		<input type="button" onclick="opciones(0)" value="Todos">
-		<input type="button"  onclick="opciones(1)" value="Por provincia">
-		<input type="button"  onclick="opciones(2)" value="Por cuota">
-		<form id="opciones">
-			<fieldset id="camposprovincia">
-				<input type="text" name="provincia" id="provincia">
-				<input type="button"  onclick="mostrar(1)" value="Mostrar">
-			</fieldset>
-			<fieldset id="camposcuota">
-				<input type="number" name="cuota" id="cuota">
-				<input type="button"  onclick="mostrar(2,0)" value="Menor">
-				<input type="button"  onclick="mostrar(2,1)" value="Mayor">
-			</fieldset>
-		</form>
-	</section>
+	<div class="container">
+		<header id="cabecera">
+			<h1>Mostrar Usuarios</h1>	
+			<section id="panel">
+				<input type="button"  onclick="opciones(0)" value="Todos">
+				<input type="button"  onclick="opciones(1)" value="Por provincia">
+				<input type="button"  onclick="opciones(2)" value="Por cuota">
+				<form id="opciones">
+					<fieldset id="camposprovincia">
+						<input type="text" name="provincia" id="provincia">
+						<input type="button"  onclick="mostrar(1)" value="Mostrar">
+					</fieldset>
+					<fieldset id="camposcuota">
+						<input type="number" name="cuota" id="cuota">
+						<input type="button"  onclick="mostrar(2,0)" value="Menor">
+						<input type="button"  onclick="mostrar(2,1)" value="Mayor">
+					</fieldset>
+				</form>
+			</section>
+		</header>
+		<table id="tabla" class="table table-hover"></table>
+	</div>
 
-
-
-	<table id="tabla"></table>
-
-<script type="text/javascript" src="js.js"></script>	
+<script type="text/javascript" src="js/js.js"></script>	
 </body>
 </html>

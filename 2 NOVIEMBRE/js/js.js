@@ -14,7 +14,7 @@ class Usuarios{
 
 	mostrarProvincia(provincia){
 
-		if(this.provincia == provincia)
+		if(this.provincia.toUpperCase() == provincia.toUpperCase())
 			return "<tr><td>" +this.usuario+ "</td><td>" +this.provincia+ "</td><td>" +this.cuota+ "</td></tr>";
 		else
 			return "";
@@ -35,7 +35,7 @@ var usuarios = [new Usuarios("Laura","Santander",50) ,new Usuarios("Álvaro","Ca
 
 function mostrar(num, menormayor){
 
-	var contenido = "<thead><tr><th>Usuario</th><th>Provincia</th><th>Cuota</th></tr></thead>";
+	var contenido = '<thead><tr><th class="tableth">Usuario</th><th class="tableth">Provincia</th><th class="tableth">Cuota</th></tr></thead><tbody id="tbody"></tbody>';
 	var provincia = "";
 	var cuota = "";
 
@@ -57,19 +57,19 @@ function mostrar(num, menormayor){
 function opciones(num){
 
 	if(num == 1){
-		document.getElementById("opciones").style.display = "block";
 		document.getElementById("camposprovincia").style.display = "block";
 		document.getElementById("camposcuota").style.display = "none";
+		document.getElementById("cabecera").style.marginBottom = '100px';
 	}
 	else if(num == 2){
-		document.getElementById("opciones").style.display = "block";
 		document.getElementById("camposcuota").style.display = "block";
 		document.getElementById("camposprovincia").style.display = "none";
+		document.getElementById("cabecera").style.marginBottom = '100px';
 	}
 	else{
-		document.getElementById("opciones").style.display = "none";
 		document.getElementById("camposcuota").style.display = "none";
 		document.getElementById("camposprovincia").style.display = "none";
+		document.getElementById("cabecera").style.marginBottom = '30px';
 		mostrar(num);
 	}
 }
